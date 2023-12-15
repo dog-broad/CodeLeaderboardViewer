@@ -5,8 +5,6 @@
   "keywords": [],
   "main": "index.js",
   "homepage": "https://dog-broad.github.io/CodeLeaderboardViewer",
-  "predeploy": "yarn run build",
-  "deploy": "gh-pages -d build",
   "dependencies": {
     "namor": "1.0.1",
     "papaparse": "^5.4.1",
@@ -23,6 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   }
 }
