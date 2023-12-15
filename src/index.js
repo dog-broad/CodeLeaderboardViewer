@@ -19,28 +19,32 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-    // Fetch CSV data from the provided link with 'no-cors' mode
-    fetch(
-      "https://raw.githubusercontent.com/dog-broad/Test-Repo/main/CurrentCodeRankingLeaderboard.csv"
-    )
-      .then((response) => response.text())
-      .then((text) => {
-        // Processing the fetched text as CSV data using PapaParse
-        const parsedData = Papa.parse(text, { header: true }).data;
-        this.setState({ data: parsedData });
+  async componentDidMount() {
+    try {
+      const response = await fetch(
+        "https://raw.githubusercontent.com/dog-broad/Test-Repo/main/CurrentCodeRankingLeaderboard.csv"
+      );
+      
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-        // Detect if the device is mobile
-        const isMobile = window.innerWidth <= 768; // Change the breakpoint as needed
-        this.setState({ isMobile });
-      })
-      .catch((error) => {
-        console.error("Error fetching CSV data:", error);
-      });
+      const text = await response.text();
+      // Processing the fetched text as CSV data using PapaParse
+      const parsedData = Papa.parse(text, { header: true }).data;
+      this.setState({ data: parsedData });
 
-      // Event listener for window resize
-      window.addEventListener("resize", this.handleWindowResize);
+      // Detect if the device is mobile
+      const isMobile = window.innerWidth <= 768; // Change the breakpoint as needed
+      this.setState({ isMobile });
+    } catch (error) {
+      console.error("Error fetching CSV data:", error);
+    }
+
+    // Event listener for window resize
+    window.addEventListener("resize", this.handleWindowResize);
   }
+
 
   componentWillUnmount() {
     // Remove the event listener on component unmount
