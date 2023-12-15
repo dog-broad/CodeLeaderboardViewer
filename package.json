@@ -1,0 +1,28 @@
+{
+  "name": "react-table-fixed-columns-official-forked",
+  "version": "0.0.0",
+  "description": null,
+  "keywords": [],
+  "main": "index.js",
+  "homepage": "https://dog-broad.github.io/CodeLeaderboardViewer",
+  "predeploy": "yarn run build",
+  "deploy": "gh-pages -d build",
+  "dependencies": {
+    "namor": "1.0.1",
+    "papaparse": "^5.4.1",
+    "prop-types": "15.7.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-table": "6.11.5",
+    "react-table-hoc-fixed-columns": "2.3.4"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
